@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+input:focus {
+  border: solid white 1px;
+}
+
+label {
+  width: 85%;
+  font-size: .8em;
+}
+
+.input-dark {
+  background-color: #373139;
+  border-radius: 8px;
+  padding: 10px 14px 10px 14px;
+  gap: 8px;
+  border: none;
+  width: 80%;
+  outline: 0;
+  height: 35px;
+  transition: .8s ease-in-out;
+  color: #FFFFFF
+}
+
+.input-light {
+  background-color: #FFFFFF;
+  border: 1px solid #939393;
+  border-radius: 8px;
+  padding: 10px 14px 10px 14px;
+  gap: 8px;
+  width: 80%;
+  height: 35px;
+  outline: 1px solid #939393;
+  transition: .8s ease-in-out;
+  color: #7f7e7f
+}
+
+.input-container .input-error {
+  color: red;
+  font-size: 12px;
+  font-style: italic;
+  position: absolute;
+  margin-top: 105px;
+}
+
+.submit-button {
+  width: 90%;
+  height: 40px;
+  background-color: #D372FC;
+  border-radius: 1.5em;
+  font-weight: 500;
+  font-size: 1.2em;
+  line-height: 20px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: .2s ease-in;
+}
+
+.submit-button:hover {
+  background-color: #e097ff;
+}
+
+.sample-link {
+  text-decoration: none;
+  color: #D372FC;
+  font-size: .8em;
+  font-weight: 800;
+
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.custom-checkbox input {
+  display: none; /* Hide the default checkbox */
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  background-color: #D372FC; /* Default background color */
+  border: none; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  position: relative;
+  margin-right: 10px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.custom-checkbox input:checked + .checkmark::after {
+  display: block;
+}
+
+.checkmark::after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white; /* Checkmark color */
+  border-width: 0 2px 2px 0; /* Create the checkmark */
+  transform: rotate(45deg);
+}
+

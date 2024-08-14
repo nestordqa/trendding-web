@@ -51,5 +51,11 @@
   flex-direction: column;
   height: 296px;
   width: 374px;
-  
+}
+
+.eye-container {
+  position: relative;
+  top: -40px;
+  right: -140px;
+  cursor: pointer;
 }

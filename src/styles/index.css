@@ -80,4 +80,44 @@ label {
 
 }
 
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.custom-checkbox input {
+  display: none; /* Hide the default checkbox */
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  background-color: #D372FC; /* Default background color */
+  border: none; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  position: relative;
+  margin-right: 10px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.custom-checkbox input:checked + .checkmark::after {
+  display: block;
+}
+
+.checkmark::after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white; /* Checkmark color */
+  border-width: 0 2px 2px 0; /* Create the checkmark */
+  transform: rotate(45deg);
+}
 

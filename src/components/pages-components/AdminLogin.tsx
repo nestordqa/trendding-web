@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styles/Login.css';
 import '../../styles/index.css'
 import darkLogo from '../../assets/images/logo-dark.png';
+import gradient from '../../assets/images/login-background-gradient.png';
+import pattern from '../../assets/images/login-background.png';
 import { FieldValues, useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-
+import { useGlobalData } from '../../ThemeContext';
+import { getTokenData, isAdmin, setDataLocalStorage, validateSession } from '../../utils/common/common';
 function AdminLogin() {
+
+    const [style, setStyle] = useState('dark');
+    const globalData = useGlobalData();
+    const navigate = useNavigate();
+
     const { 
         register, 
         handleSubmit, 
         formState: { errors },
         reset,
-        watch
     } = useForm();
 
     const [inputPasswordType, setInputPasswordType] = useState('password');
@@ -34,18 +41,56 @@ function AdminLogin() {
     };
 
     //On submit login form
-    const onSubmit = (data: FieldValues): void => {
-        console.log(data);
-        reset();
+    const onSubmit = async (data: FieldValues): Promise<void> => {
+        try {
+            const url = process.env.REACT_APP_API_BASE_URL as string;
+            const login = await fetch(`${url}login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+            const loginSuccess = await login.json();
+            if (loginSuccess) {
+                const tokenData = getTokenData(loginSuccess);
+                if (!isAdmin(tokenData)) {
+                    alert('el usuario no es un admin!');
+                    return;
+                } else {
+                    globalData.setToken(loginSuccess);
+                    globalData.setUsuario(tokenData);
+                    if (data.remember) {
+                        await setDataLocalStorage(globalData);
+                    }
+                    navigate('/admin/dashboard');
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        } finally {
+            reset();
+        }
     }
-    console.log(watch('holi', errors));
     
+    useEffect(() => {
+        if (validateSession()) {
+            navigate('/admin/dashboard');
+        }
+        if (globalData !== undefined) {
+            setStyle(globalData.theme);
+        }
+    }, [globalData])
+
     return (
-        <div className='login-container-dark'>
+        <div className={`login-container-${style}`}>
             <img 
                 src={darkLogo}
                 alt='Trendding logo' 
             />
+            <p className='login-header'>
+                Inicia sesión con tu cuenta
+            </p>
             <form 
                 onSubmit={handleSubmit(onSubmit)}
                 className='login-form'
@@ -54,7 +99,7 @@ function AdminLogin() {
                 <div className='input-container'>
                     <label htmlFor="email">Email</label>
                     <input
-                        className='input-dark'
+                        className={`input-${style}`}
                         placeholder='email@tuemail.com'
                         {...register("email", { 
                             required: true,
@@ -70,7 +115,7 @@ function AdminLogin() {
                     <label htmlFor="email">Contraseña</label>
                     <input
                         placeholder='Contraseña'
-                        className='input-dark'
+                        className={`input-${style}`}
                         type={inputPasswordType}
                         {...register("password", { required: true })} 
                     />
@@ -103,6 +148,18 @@ function AdminLogin() {
                     value={'Inicia sesión'}
                 />
             </form>
+            <div className='login-background-container-1'>
+                <img 
+                    src={gradient} 
+                    alt="Trendding Gradient" 
+                />
+            </div>
+            <div className='login-background-container-2'>
+                <img 
+                    src={pattern} 
+                    alt="Trendding Pattern" 
+                />
+            </div>
         </div>
     );
     }

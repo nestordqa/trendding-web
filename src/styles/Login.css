@@ -51,6 +51,7 @@
   flex-direction: column;
   height: 296px;
   width: 374px;
+  z-index: 10000;
 }
 
 .eye-container {
@@ -58,4 +59,23 @@
   top: -40px;
   right: -140px;
   cursor: pointer;
+}
+
+.login-header {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41.6px;
+}
+.login-background-container-1 {
+  position: fixed;
+  bottom: -5%;
+  right: -5%;
+  z-index: 0;
+}
+
+.login-background-container-2 {
+  position: fixed;
+  bottom: -5%;
+  right: -5%;
+  z-index: 0;
 }

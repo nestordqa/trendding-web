@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../../styles/Login.css';
 import '../../styles/index.css'
 import darkLogo from '../../assets/images/logo-dark.png';
@@ -80,6 +80,7 @@ function AdminLogin() {
         if (globalData !== undefined) {
             setStyle(globalData.theme);
         }
+    // eslint-disable-next-line
     }, [globalData])
 
     return (

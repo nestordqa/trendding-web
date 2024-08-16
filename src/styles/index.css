@@ -121,3 +121,8 @@ label {
   transform: rotate(45deg);
 }
 
+/* Style the scrollbar */
+::-webkit-scrollbar {
+  width: 0px; /* Width of the scrollbar */
+}
+

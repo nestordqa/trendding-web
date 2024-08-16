@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import '../../styles/Login.css';
 import '../../styles/index.css'
 import darkLogo from '../../assets/images/logo-dark.png';
+import lightLogo from '../../assets/images/logo-light.png';
 import gradient from '../../assets/images/login-background-gradient.png';
 import pattern from '../../assets/images/login-background.png';
 import { FieldValues, useForm } from 'react-hook-form';
@@ -9,9 +10,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useGlobalData } from '../../ThemeContext';
 import { getTokenData, isAdmin, setDataLocalStorage, validateSession } from '../../utils/common/common';
-function AdminLogin() {
 
+function AdminLogin() {
     const [style, setStyle] = useState('dark');
+    const [logo, setLogo] = useState(darkLogo);
     const globalData = useGlobalData();
     const navigate = useNavigate();
 
@@ -79,6 +81,7 @@ function AdminLogin() {
         }
         if (globalData !== undefined) {
             setStyle(globalData.theme);
+            setLogo(style === 'dark' ? darkLogo : lightLogo);
         }
     // eslint-disable-next-line
     }, [globalData])
@@ -86,7 +89,7 @@ function AdminLogin() {
     return (
         <div className={`login-container-${style}`}>
             <img 
-                src={darkLogo}
+                src={logo}
                 alt='Trendding logo' 
             />
             <p className='login-header'>

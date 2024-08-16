@@ -13,7 +13,7 @@ const ThemeContext = createContext({
 export const ThemeProvider = ({ children }:any) => {
     const [theme, setTheme] = useState('dark'); // Default theme
     const [jwt, setJwt] = useState('');
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState<any>({});
     const setToken = (str: string) => {
         setJwt(str);
     };

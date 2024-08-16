@@ -12,6 +12,9 @@ import categories from '../../assets/images/courses-categories-logo.png';
 import ads from '../../assets/images/ads-logo.png';
 import user from '../../assets/images/user-logo.png';
 import roles from '../../assets/images/roles-logo.png';
+import settings from '../../assets/images/settings-logo.png';
+import support from '../../assets/images/support-logo.png';
+
 export const linksArray = [
     {
         url: '/admin/dashboard',
@@ -91,22 +94,19 @@ export const linksArray = [
         name: 'Roles',
         secondImage: null
     },
+];
+
+export const linksSettings = [
     {
-        url: '/admin/dashboard/ads',
-        image: ads,
-        name: 'Publicidad',
+        url: '/admin/dashboard/settings',
+        image: settings,
+        name: 'Ajustes',
         secondImage: null
     },
     {
-        url: '/admin/dashboard/user',
-        image: user,
-        name: 'Usuarios',
-        secondImage: null
-    },
-    {
-        url: '/admin/dashboard/roles',
-        image: roles,
-        name: 'Roles',
+        url: '/admin/dashboard/support',
+        image: support,
+        name: 'Soporte y asistencia',
         secondImage: null
     },
 ];

@@ -6,3 +6,10 @@ export interface GlobalContext {
     user: any,
     setUsuario: (user: any)=>void
 }
+
+export interface NavlinksProps {
+    url: string,
+    image: string | null,
+    name: string,
+    secondImage: string | null
+}

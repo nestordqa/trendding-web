@@ -52,7 +52,7 @@ root.render(
                         <Route path='/admin/dashboard/payments' element={<PaymentManagement />} />
                         <Route path='/admin/dashboard/courses-categories' element={<CoursesCategories />} />
                         <Route path='/admin/dashboard/ads' element={<Ads />} />
-                        <Route path='/admin/dashboard/users' element={<Users />} />
+                        <Route path='/admin/dashboard/user' element={<Users />} />
                         <Route path='/admin/dashboard/roles' element={<Roles />} />
                         <Route path='/admin/dashboard/settings' element={<Settings />} />
                         <Route path='/admin/dashboard/support' element={<Support />} />

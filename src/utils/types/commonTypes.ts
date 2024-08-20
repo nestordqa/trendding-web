@@ -25,3 +25,8 @@ export interface NavlinksProps {
     name: string,
     secondImage: string | null
 }
+
+export interface ChipType {
+    name: string,
+    type: string
+};

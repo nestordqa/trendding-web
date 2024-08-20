@@ -10,6 +10,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useGlobalData } from '../../ThemeContext';
 import { getTokenData, isAdmin, setDataLocalStorage, validateSession } from '../../utils/common/common';
+import { simpleWarningAlert } from '../../utils/common/alerts';
 
 function AdminLogin() {
     const [style, setStyle] = useState('dark');
@@ -57,14 +58,20 @@ function AdminLogin() {
             if (loginSuccess) {
                 const tokenData = getTokenData(loginSuccess);
                 if (!isAdmin(tokenData)) {
-                    alert('el usuario no es un admin!');
+                    simpleWarningAlert(
+                        'Ups...',
+                        'El usuario ingresado no es un administrador',
+                        style
+                    );
                     return;
                 } else {
+                    // console.log(loginSuccess);
                     globalData.setToken(loginSuccess);
                     globalData.setUsuario(tokenData);
                     if (data.remember) {
                         await setDataLocalStorage(globalData);
                     }
+                    // console.log(globalData, "desde el login")
                     navigate('/admin/dashboard');
                 }
             }

@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
 }
 .layout-container-light {
     background-color: #FFFFFF;
@@ -15,6 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
 }
 
 .nav-container-dark {
@@ -26,6 +28,8 @@
     align-items: center;
     flex-direction: column;
     overflow-y:auto !important;
+    position: fixed;
+    left: 0;
     /* overflow-x: hidden; */
 }
 
@@ -39,6 +43,8 @@
     align-items: center;
     flex-direction: column;
     overflow-y:auto !important;
+    position: fixed;
+    left: 0;
 }
 
 .links-container {
@@ -172,11 +178,21 @@ button {
 .outlet-container-dark {
     height: 100%;
     border-left: #5e5e5e solid 1px;
-    width: calc(100vw - 306px);
+    width: calc(100vw - 336px);
+    height: 100vh;
+    overflow-y: scroll;
+    /* background-color: #663a77; */
+    position: absolute;
+    right: 0;
 }
 
 .outlet-container-light {
     height: 100%;
     border-left: #5e5e5e solid 1px;
-    width: calc(100vw - 306px);
+    width: calc(100vw - 336px);
+    height: 100vh;
+    overflow-y: scroll;
+    /* background-color: #663a77; */
+    position: absolute;
+    right: 0;
 }

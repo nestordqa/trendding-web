@@ -10,6 +10,7 @@ import { Chip } from '../common-components/Chip';
 import { getAllCategories } from '../../utils/common/react-query/categories';
 import { successAlert } from '../../utils/common/alerts';
 import { useNavigate } from 'react-router-dom';
+import { SimpleTooltip } from '../common-components/Tooltip';
 
 export const CreateCourse = () => {
     const navigate = useNavigate();
@@ -118,7 +119,7 @@ export const CreateCourse = () => {
                         <div className="header-status-select">
                             <div className='title-container'>
                                 <h2 className='section-title'>
-                                    Crear Lección
+                                    Crear Curso
                                 </h2>
                                 <Chip
                                     type={'simple'}
@@ -159,7 +160,8 @@ export const CreateCourse = () => {
                                 htmlFor="name"
                                 className='inputs-label'
                             >
-                                Nombre de la lección
+                                Nombre del curso
+                                <SimpleTooltip idTooltip={'name'} text={'Máximo 10 caracteres. No se permite HTML ni emojis'}/>
                             </label>
                             <input
                                 placeholder='Escriba el nombre de la lección aquí...'
@@ -173,6 +175,7 @@ export const CreateCourse = () => {
                                 className='inputs-label'
                             >
                                 Descripción
+                                <SimpleTooltip idTooltip={'description'} text={'No se permite HTML ni emojis'}/>
                             </label>
                             <textarea
                                 placeholder='Escriba aquí la descripción del curso...'
@@ -189,6 +192,7 @@ export const CreateCourse = () => {
                                         className='inputs-label'
                                     >
                                         Fecha
+                                        <SimpleTooltip idTooltip={'date'} text={'Debes escoger una fecha posterior al día de hoy'}/>
                                     </label>
                                     <input
                                         type='date'
@@ -202,6 +206,7 @@ export const CreateCourse = () => {
                                         className='inputs-label'
                                     >
                                         Hora
+                                        <SimpleTooltip idTooltip={'hour'} text={'Aqui puedes escoger la hora del curso, selecciona cuidadósamente si es PM o AM'}/>
                                     </label>
                                     <input
                                         type='time'
@@ -213,7 +218,15 @@ export const CreateCourse = () => {
                             </div>
                             <div className='second-input-container-container'>
                                 <div className={`little-input-container custom-select-${style}`}>
-                                    <span>Categoria</span>
+                                    <span
+                                        style={{
+                                            display: 'flex',
+                                            columnGap: '0.5em'
+                                        }}
+                                    >
+                                        Categoria
+                                        <SimpleTooltip idTooltip={'categorie'} text={'Aquí puedes escoger la categoría, las mismas puedes crearlas en el apartado de gestión de categorías.'}/>
+                                    </span>
                                     <select 
                                         {...register("categoriesId", { 
                                             required: true,
@@ -307,7 +320,15 @@ export const CreateCourse = () => {
                             <img src={arrow} alt="Dropdown arrow" className='dropdown-arrow-select'/>
                         </div>
                         <div className="select-status">
-                            <span>Examen</span>
+                            <span
+                                style={{
+                                    display: 'flex',
+                                    columnGap: '0.5em'
+                                }}
+                            >
+                                Examen
+                                <SimpleTooltip idTooltip={'test'} text={'Si escoges un SI, se abrirá un apartado para que subas los archivos del exámen'}/>
+                            </span>
                             <select 
                                 {...register("test", { 
                                     required: true,
@@ -320,7 +341,15 @@ export const CreateCourse = () => {
                             <img src={arrow} alt="Dropdown arrow" className='dropdown-arrow-select'/>
                         </div>
                         <div className="select-status">
-                            <span>Certificado</span>
+                            <span
+                                style={{
+                                    display: 'flex',
+                                    columnGap: '0.5em'
+                                }}
+                            >
+                                Certificado
+                                <SimpleTooltip idTooltip={'certificado'} text={'Si escoges un SI, se abrirá un apartado para que subas los archivos del exámen'}/>
+                            </span>
                             <select 
                                 {...register("certificado", { 
                                     required: true,
@@ -333,7 +362,15 @@ export const CreateCourse = () => {
                             <img src={arrow} alt="Dropdown arrow" className='dropdown-arrow-select'/>
                         </div>
                         <div className="select-status">
-                            <span>Modalidad</span>
+                            <span
+                                style={{
+                                    display: 'flex',
+                                    columnGap: '0.5em'
+                                }}
+                            >
+                                Modalidad
+                                {/* <SimpleTooltip idTooltip={'certificado'} text={''}/> */}
+                            </span>
                             <select 
                                 {...register("modalidad", { 
                                     required: true,

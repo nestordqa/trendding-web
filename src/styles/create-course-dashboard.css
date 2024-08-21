@@ -233,6 +233,8 @@
     font-weight: 600;
     text-align: left;
     width: 100%;
+    display: flex;
+    column-gap: 0.5em;
     /* background-color: #373139; */
 }
 

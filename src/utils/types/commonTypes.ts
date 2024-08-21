@@ -30,3 +30,8 @@ export interface ChipType {
     name: string,
     type: string
 };
+
+export interface TooltipType {
+    text: string,
+    idTooltip: string
+}

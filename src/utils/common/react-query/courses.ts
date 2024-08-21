@@ -14,3 +14,18 @@ export const getCourses = async(jwt: string) => {
         console.error(error);
     }
 };
+
+export const getCourseById = async(jwt: string, id: number) => {
+    try {
+        const courses = await fetch(`${baseUrl}courses/${id}`, {
+            method: 'GET',
+            headers: {
+                "Authorization": jwt,
+                "Content-Type": "application/json",
+            }
+        });
+        return await courses.json();
+    } catch (error) {
+        console.error(error);
+    }
+};

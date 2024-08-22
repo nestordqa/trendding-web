@@ -25,6 +25,7 @@ import { Layout } from './components/common-components/Layout';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { CreateCourse } from './components/pages-components/CreateCourse';
 import { CreateLesson } from './components/pages-components/CreateLesson';
+import { CreateCategorie } from './components/pages-components/CreateCategorie';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -59,6 +60,7 @@ root.render(
                             <Route path='/admin/dashboard/afiliates' element={<AfiliatesManagement />} />
                             <Route path='/admin/dashboard/payments' element={<PaymentManagement />} />
                             <Route path='/admin/dashboard/courses-categories' element={<CoursesCategories />} />
+                            <Route path='/admin/dashboard/courses-categories/create' element={<CreateCategorie />} />
                             <Route path='/admin/dashboard/ads' element={<Ads />} />
                             <Route path='/admin/dashboard/user' element={<Users />} />
                             <Route path='/admin/dashboard/roles' element={<Roles />} />

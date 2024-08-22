@@ -135,7 +135,7 @@ export const CoursesCategories = () => {
                 </div>
             </div>
             <div className="courses-list-container">
-              <div className="headear-categories-container">
+              <div className={`headear-categories-container-${style}`}>
                 <div className="categorie-checkbox" onClick={handleSelect}>
                   <label className="custom-checkbox">
                       <input

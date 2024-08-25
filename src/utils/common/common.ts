@@ -1,4 +1,6 @@
 import { GlobalContext } from '../types/commonTypes';
+import S3 from 'react-aws-s3-typescript';
+
 // import { useNavigate } from "react-router-dom";
 
 export const setDataLocalStorage = async (datos: GlobalContext) => {
@@ -87,4 +89,22 @@ export const getTokenData = (token: string) => {
 
 export const avatarUrl = (str: string): string => {
     return `${process.env.REACT_APP_AVATAR_API}/${str}`;
+};
+
+export const uploadImage = async (data: any) => {
+    try {
+        const ReactS3Client = new S3({
+            accessKeyId: 'AKIA3FLD3JMFIJ4K72MF',
+            secretAccessKey: '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',
+            bucketName: 'bucket-images-trendding',
+            region: 'us-east-2',
+        });
+        console.info(ReactS3Client, 'Cliente React AWS');
+        const newImg = await ReactS3Client.uploadFile(data);
+        if (newImg && newImg.location) {
+            return newImg;
+        }
+    } catch (error) {
+        console.error('Ocurrio un errror al subir la imagen', error);
+    }
 };

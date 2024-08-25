@@ -5,7 +5,7 @@
     flex-direction: column;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .header-courses {
@@ -130,16 +130,16 @@
     /* background-color: #D372FC; */
 }
 
-.courses-options {
+.courses-options-teachers {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: row;
     width: 1040px;
-    height: 100px;
+    height: 150px;
 }
 
-.options-container {
+.options-container-teachers {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -156,18 +156,13 @@
     align-items: center;
     flex-direction: row;
     height: 75%;
-    width: 100%;
+    width: 50%;
 }
 
 .new-course-button {
     width: 188px;
     height: 40px;
     border-radius: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    /* padding-left: 1em; */
     gap: 8px;
     background-color: #D372FC;
     transition: ease-in-out all .2s;
@@ -178,41 +173,26 @@
     background-color: #dd9ff8;
 }
 
-.headear-categories-container-dark {
-    background-color: #1F1A20;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 64px;
-    border-radius: 12px;
-    padding-right: 1em;
+.teachers-list-container {
+    /* background-color: #7f7e7f; */
     width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two equal columns */
+    gap: 10px;
+    row-gap: 2.5em;
     /* overflow-y: auto !important;
     height:420px; */
-}
-
-.headear-categories-container-light {
-    background-color: #b0b0b0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    justify-items: center;
     align-items: center;
-    height: 64px;
-    border-radius: 12px;
-    padding-right: 1em;
-    width: 100%;
-    /* overflow-y: auto !important;
-    height:420px; */
 }
 
 /* .custom-select {
     min-width: 350px;
   } */
   
-  .custom-select-dashboard-dark select {
+  .custom-select-dashboard-teachers-dark select {
     appearance: none;
-    width: 163px;
+    width: 440px;
     height: 40px;
     font-size: 16px;
     line-height: 23px;
@@ -224,9 +204,9 @@
     color: inherit
   }
 
-  .custom-select-dashboard-light select {
+  .custom-select-dashboard-teachers-light select {
     appearance: none;
-    width: 163px;
+    width: 440px;
     height: 40px;
     font-size: 16px;
     line-height: 23px;

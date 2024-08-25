@@ -5,9 +5,11 @@ import { useGlobalData } from '../../ThemeContext';
 import '../../styles/lesson-card.css';
 import { warningAlert } from '../../utils/common/alerts';
 import { Chip } from './Chip';
+import { getImageLesson } from '../../utils/common/react-query/filesQuering';
 
 export const LessonCard = ({lesson}: any) => {
     const globalData = useGlobalData();
+    const [image, setImage] = useState<any>(null);
     const [style, setStyle] = useState('');
     const getYear = (): string => {
         return lesson.createdAt.slice(0, 4);
@@ -64,6 +66,16 @@ export const LessonCard = ({lesson}: any) => {
         return `${month}/${day}/${year}`;
     };
     useEffect(() => {
+        getImageLesson(globalData.jwt, lesson.id)
+            .then((data) => {
+                return data?.json();
+            })
+            .then((datica) => {
+                if (datica && datica.length) {
+                    setImage(datica[0].url);
+                }
+            })
+            .catch((e) => console.error(e));
             if (globalData !== undefined) {
                 setStyle(globalData.theme);
             }
@@ -82,7 +94,7 @@ export const LessonCard = ({lesson}: any) => {
         </div>
         <div className="course-contain">
             <div className="course-image-container">
-                Aqui va la imagen
+                {image && <img src={image} alt={lesson.name} className='course-image'/>}
             </div>
             <div className="course-info-container">
                 <div className="header-info-container">

@@ -89,11 +89,20 @@
 
 .course-image-container  {
     background-color: #322C35;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 402px;
     height: 302px;
     border-radius: 8px;
     padding: 24px;
     gap: 24px;
+}
+
+.course-image {
+    width: 354px;
+    height: 267px;
+    border-radius: 8px;
 }
 
 .course-info-container {

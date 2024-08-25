@@ -50,15 +50,17 @@
     margin-top: 0%; */
 }
 
-.custom-select-dark {
+.custom-select-create-teacher-dark {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
+    /* background-color: #C947FF; */
+    row-gap: 1.5em;
 }
-.custom-select-light {
+.custom-select-create-teacher-light {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -205,90 +207,6 @@
     border: 1px #b4b4b4 solid;
     border-radius: 16px;
     padding: 24px
-}
-
-.input-image-container-dark {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-direction: column;
-    width: 97.5%;
-    height: 200px;
-    background-color: #373139;
-    border: dashed #A8A0AB 3px;
-    padding: 12px;
-    border-radius: 12px;
-}
-
-.input-image-container-light {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 97.5%;
-    height: 200px;
-    background-color: #ffffff;
-    border: dashed #A8A0AB 3px;
-    padding: 12px;
-    border-radius: 12px;
-}
-
-.disclaimer-image-container {
-    /* background-color: #b4b4b4; */
-    height: 160px;
-    width: 230px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.disclaimer-image-container h3 {
-    font-weight: 600;
-    font-size: 14px;
-    /* background-color: #b4b4b4; */
-
-}
-
-.image-preview {
-    width: 100px;
-    height: 100px;
-    border-radius: 1em;
-    background-color: #898989;
-    margin-bottom: 1.5em;
-}
-
-.file-upload {
-    position: relative;
-    display: inline-block;
-}
-
-input[type="file"] {
-    position: absolute;
-    z-index: 1000000; /* Ensure it's above the label */
-    opacity: 0; 
-    cursor: pointer; /* Pointer cursor */
-    /* background-color: #C947FF; */
-    padding: 20px 10px 6px 35px;
-    width: 183px;
-    height: 40px;
-}
-
-.custom-file-upload {
-    display: inline-block;
-    padding: 20px 10px 6px 35px;
-    gap: 6px;
-    background-color: #F9FAFB; /* Blue background */
-    color: #898989; /* White text */
-    border-radius: 9px; /* Rounded corners */
-    z-index: 2; /* Ensure it's above the input */
-    cursor: pointer; /* Pointer cursor */
-    text-align: right;
-    width: 183px;
-    height: 40px;
-    /* text-justify: center; */
-    font-size: 16px;
-    
 }
 
 .title-container-2 {

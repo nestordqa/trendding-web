@@ -1,27 +1,43 @@
 import React, { useEffect, useState } from 'react'
+import { HiOutlineUpload, HiOutlineCloudUpload } from "react-icons/hi";
 import { useQuery } from '@tanstack/react-query'
 import { useGlobalData } from '../../ThemeContext';
-import { FieldValues, useForm } from 'react-hook-form';
+import { Controller, FieldValues, useForm } from 'react-hook-form';
 import { HiOutlineEye } from "react-icons/hi";
 import arrow from '../../assets/images/dropdown-arrow.png';
 import '../../styles/courses-dashboard.css';
 import '../../styles/create-course-dashboard.css';
 import { Chip } from '../common-components/Chip';
 import { getAllCategories } from '../../utils/common/react-query/categories';
-import { successAlert } from '../../utils/common/alerts';
+import { simpleWarningAlert, successAlert } from '../../utils/common/alerts';
 import { useNavigate } from 'react-router-dom';
 import { SimpleTooltip } from '../common-components/Tooltip';
+import { ImageObject } from '../../utils/types/commonTypes';
+import { uploadImage } from '../../utils/common/common';
+import { Loading } from '../common-components/Loading';
+import { postImageCourse } from '../../utils/common/react-query/filesQuering';
 
 export const CreateCourse = () => {
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+    const [image, setImage] = useState<ImageObject | any>({ preview: '', data: '' });
     const globalData = useGlobalData();
     const [style, setStyle] = useState('');
     const { 
         register, 
-        handleSubmit, 
+        handleSubmit,
+        control, 
         formState: { errors },
         reset,
     } = useForm();
+
+    const handleFileChange = (e: any) => {
+        const img = {
+            preview: URL.createObjectURL(e.target.files[0]),
+            data: e.target.files[0],
+        }
+        setImage(img);
+    }
 
     const redirect = (): void => {
         navigate('/admin/dashboard/courses');
@@ -43,7 +59,10 @@ export const CreateCourse = () => {
 
     //On submit create course form
     const onSubmit = async (data: FieldValues): Promise<void> => {
+        setLoading(true);
         try {
+            // if (!image || image.data !instanceof File) return;
+            const url = process.env.REACT_APP_API_BASE_URL as string;
             let datos = data;
             datos.categoriesId = Number(datos.categoriesId);
             datos.hours = Number(datos.hours);
@@ -53,27 +72,47 @@ export const CreateCourse = () => {
             datos.test = datos.test === 'true' ? true : false;
             datos.certificado = datos.certificado === 'true' ? true : false;
 
-            const url = process.env.REACT_APP_API_BASE_URL as string;
-            const course = await fetch(`${url}courses`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': globalData.jwt
-                },
-                body: JSON.stringify(datos)
-            });
-            const courseCreated = await course.json();
-            if (courseCreated && courseCreated.message) {
-                successAlert(
-                    redirect,
-                    '¡Bien hecho!',
-                    '¡El nuevo curso ha sido creado exitósamente!',
-                    style
-                );
+            if (image && image.data) {
+                const newImage = await uploadImage(image.data);
+                if (newImage) { 
+                    const course = await fetch(`${url}courses`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': globalData.jwt
+                        },
+                        body: JSON.stringify(datos)
+                    });
+                    const courseCreated = await course.json();
+                    if (courseCreated && courseCreated.message) {
+                        const image = await postImageCourse(
+                            globalData.jwt,
+                            {
+                                url: newImage.location,
+                                coursesId: courseCreated.new_admin.id
+                            }
+                        );
+                        if (image) {
+                            successAlert(
+                                redirect,
+                                '¡Bien hecho!',
+                                '¡El nuevo curso ha sido creado exitósamente!',
+                                style
+                            );
+                        }
+                    }
+                } else {
+                    simpleWarningAlert(
+                        'Ups, ocurrió un error...',
+                        'Hubo un error al subir tu archivo JPG o MP4',
+                        style
+                    );
+                }
             }
         } catch (error) {
             console.log(error);
         } finally {
+            setLoading(false);
             // reset();
         }
     }
@@ -87,6 +126,11 @@ export const CreateCourse = () => {
 
   return (
     <div className='create-courses-container'>
+        {loading ?
+            <Loading message={'Creando el curso...'}/>
+            :
+            null
+        }
         <div className="header-courses">
             <div className="first-container">
                 <div className="courses-title">
@@ -252,6 +296,80 @@ export const CreateCourse = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div className={`general-info-${style}`}>
+                    <div className='title-container-2'>
+                        <h2 className='section-title'>
+                            Media
+                        </h2>
+                    </div>
+                    <span
+                        style={{
+                            display: 'flex',
+                            columnGap: '0.5em',
+                            height: "2.5em",
+                            fontSize: "16px",
+                            fontWeight: "600"
+                            // backgroundColor: "#FFF"
+                        }}
+                    >
+                        Portada del curso
+                        <SimpleTooltip idTooltip={'portada-curso'} text={'Aquí puedes adjuntar un archivo JPG, JPEG o PNG para usarlo como portada del curso.'}/>
+                    </span>
+                    <div className={`input-image-container-${style}`}>
+                        {!image.preview && 
+                            <div className="disclaimer-image-container">
+                                <HiOutlineCloudUpload 
+                                style={{
+                                    width: '50px',
+                                    height: '50px',
+                                    color: '#898989',
+                                    cursor: 'pointer'
+                                }}
+                                />
+                                <h3>
+                                    Arrastre o suelte aquí tus archivos
+                                </h3>
+                            </div>                                
+                            }
+                        {image.preview && 
+                            <img 
+                                src={image.preview} 
+                                className='image-preview'
+                                alt='Uploading'
+                            />}
+                        <Controller
+                            name='file'
+                            control={control}
+                            render={({field}:any) => (
+                                <div className='"file-upload"'>
+                                    <input 
+                                        {...field}
+                                        type='file'
+                                        className='input-image'
+                                        onChange={(e: any) => {
+                                            field.onChange(e);
+                                            handleFileChange(e);
+                                        }}
+                                    />
+                                    <HiOutlineUpload
+                                        style={{
+                                            width: '25px',
+                                            height: '25px',
+                                            color: '#898989',
+                                            cursor: 'pointer',
+                                            position: 'absolute',
+                                            marginLeft: '20px',
+                                            marginTop: '18px'
+                                        }}
+                                    />
+                                    <label htmlFor="file" className="custom-file-upload">
+                                        Sube tu imagen aquí
+                                    </label>
+                                </div>
+                            )}
+                        />
                     </div>
                 </div>
                 <div className={`aditional-container-${style}`}>

@@ -5,10 +5,13 @@ import { useGlobalData } from '../../ThemeContext';
 import '../../styles/course-card.css';
 import { warningAlert } from '../../utils/common/alerts';
 import { Chip } from './Chip';
+import { useQuery } from '@tanstack/react-query';
+import { getImageCourse } from '../../utils/common/react-query/filesQuering';
 
 export const CourseCard = ({course}: any) => {
     const globalData = useGlobalData();
     const [style, setStyle] = useState('');
+    const [image, setImage] = useState<any>(null);
     const getYear = (): string => {
         return course.createdAt.slice(0, 4);
     }
@@ -64,9 +67,19 @@ export const CourseCard = ({course}: any) => {
         return `${month}/${day}/${year}`;
     };
     useEffect(() => {
-            if (globalData !== undefined) {
-                setStyle(globalData.theme);
-            }
+        getImageCourse(globalData.jwt, course.id)
+            .then((data) => {
+                return data?.json();
+            })
+            .then((datica) => {
+                if (datica && datica.length) {
+                    setImage(datica[0].url);
+                }
+            })
+            .catch((e) => console.error(e));
+        if (globalData !== undefined) {
+            setStyle(globalData.theme);
+        }
     // eslint-disable-next-line
     }, [globalData.theme]);
     // console.log(course);
@@ -82,7 +95,7 @@ export const CourseCard = ({course}: any) => {
         </div>
         <div className="course-contain">
             <div className="course-image-container">
-                Aqui va la imagen
+                {image && <img src={image} alt={course.name} className='course-image'/>}
             </div>
             <div className="course-info-container">
                 <div className="header-info-container">

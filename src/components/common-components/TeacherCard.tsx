@@ -4,11 +4,14 @@ import { useGlobalData } from '../../ThemeContext';
 import '../../styles/teacher-cards.css';
 import { warningAlert } from '../../utils/common/alerts';
 import { Chip } from './Chip';
+import { getImageTeacher } from '../../utils/common/react-query/filesQuering';
+// import { TeacherType } from '../../utils/types/commonTypes';
 
 export const TeacherCard = ({teacher}: any) => {
     const globalData = useGlobalData();
     const courses = teacher.course;
     const [style, setStyle] = useState('');
+    const [image, setImage] = useState<any>(null);
 
     const deleteCategorieCb = async () => {
         const url = process.env.REACT_APP_API_BASE_URL as string;
@@ -49,6 +52,16 @@ export const TeacherCard = ({teacher}: any) => {
     };
 
     useEffect(() => {
+        getImageTeacher(globalData.jwt, teacher.id)
+            .then((data) => {
+                return data?.json();
+            })
+            .then((datica) => {
+                if (datica && datica.length) {
+                    setImage(datica[0].url);
+                }
+            })
+        .catch((e) => console.error(e));
             if (globalData !== undefined) {
                 setStyle(globalData.theme);
             }
@@ -65,7 +78,9 @@ export const TeacherCard = ({teacher}: any) => {
             </div>
         </div>
         <div className="teacher2">
-            <div className="teacher-photo">Aqui va la foto</div>
+            <div className="teacher-photo">
+                {image && <img src={image} alt={teacher.name} className='course-image'/>}
+            </div>
             <div className="teacher-simple-info">
                 <div className="teacher-name">
                     <h1>{teacher.name}</h1>

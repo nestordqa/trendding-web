@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query'
 import React, { useEffect, useState } from 'react'
 import { getCourses } from '../../utils/common/react-query/courses';
 import bell from '../../assets/images/bell.png';
-import arrow from '../../assets/images/dropdown-arrow.png';
 import searchIcon from '../../assets/images/search-icon.png';
 import { useGlobalData } from '../../ThemeContext';
 import '../../styles/teachers-dashboard.css';
@@ -10,6 +9,7 @@ import { simpleWarningAlert } from '../../utils/common/alerts';
 import { useNavigate } from 'react-router-dom';
 import { getTeachers } from '../../utils/common/react-query/teachers';
 import { TeacherCard } from '../common-components/TeacherCard';
+import { Loading } from '../common-components/Loading';
 
 export const TeachersManagement = () => {
     const globalData = useGlobalData();
@@ -76,11 +76,14 @@ export const TeachersManagement = () => {
         }
     };
 
-    if (isLoading) {
-        return <div>Loading</div>
-    }
   return (
     <div className='courses-container'>
+        {
+          isLoading ?
+            <Loading message={'Cargando sección de profesores'}/>
+          :
+          null
+        }
         <div className="header-courses">
             <div className="first-container">
                 <div className="courses-title">

@@ -25,6 +25,7 @@ export const CoursesManagement = () => {
             return await data?.json();
         }
     });
+
     const redirect = (): void => {
         navigate('/admin/dashboard/courses/create');
     };

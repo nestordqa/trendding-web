@@ -35,3 +35,41 @@ export interface TooltipType {
     text: string,
     idTooltip: string
 }
+
+export interface TeacherType {
+    CategorieId: null | number,
+    active: boolean,
+    categories: any,
+    categoriesId: number,
+    course: any[],
+    createdAt: string,
+    description: string,
+    document: string,
+    email: string,
+    especialidad: string,
+    id: number,
+    lection: any[],
+    name: string,
+    phone: string,
+    updatedAt: string
+}
+
+export interface ImageObject {
+    preview: string,
+    data: File
+} 
+
+export interface ImageDataCourse {
+    url: string,
+    coursesId: number
+}
+
+export interface ImageDataLection {
+    url: string,
+    lectionId: number
+}
+
+export interface ImageDataTeachers {
+    url: string,
+    teachersId: number
+}

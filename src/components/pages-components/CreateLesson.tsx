@@ -15,11 +15,12 @@ import { getCourses } from '../../utils/common/react-query/courses';
 import { Loading } from '../common-components/Loading';
 import { ImageObject } from '../../utils/types/commonTypes';
 import { uploadImage } from '../../utils/common/common';
-import { postImageLection } from '../../utils/common/react-query/filesQuering';
+import { postImageLection, postVideoLection } from '../../utils/common/react-query/filesQuering';
 
 export const CreateLesson = () => {
     const navigate = useNavigate();
     const globalData = useGlobalData();
+    const [video, setVideo] = useState<ImageObject | any>({ preview: '', data: '' });
     const [image, setImage] = useState<ImageObject | any>({ preview: '', data: '' });
     const [loading, setLoading] = useState(false);
     const [style, setStyle] = useState('');
@@ -30,6 +31,14 @@ export const CreateLesson = () => {
         formState: { errors },
         reset,
     } = useForm();
+
+    const handleVideoChange = (e: any) => {
+        const video = {
+            preview: URL.createObjectURL(e.target.files[0]),
+            data: e.target.files[0],
+        }
+        setVideo(video);
+    }
 
     const handleFileChange = (e: any) => {
         const img = {
@@ -59,17 +68,15 @@ export const CreateLesson = () => {
         }
     });
 
-    const getCategories = (): any => {
-        return data.map((item: any, idx: number) => (
-            <option value={item.id} key={idx}>{item.name}</option>
-        ));
-    };
+    // const getCategories = (): any => {
+    //     return data.map((item: any, idx: number) => (
+    //         <option value={item.id} key={idx}>{item.name}</option>
+    //     ));
+    // };
 
-    const getCoursesList = (): any => {
-        return courses.map((item: any, idx: number) => (
-            <option value={item.id} key={idx}>{item.name}</option>
-        ));
-    };
+    // const getCoursesList = (): any => {
+    //     return 
+    // };
 
     //On submit create course form
     const onSubmit = async (data: FieldValues): Promise<void> => {
@@ -83,9 +90,10 @@ export const CreateLesson = () => {
             datos.active = datos.status === 'true' ? true : false;
             datos.test = datos.test === 'true' ? true : false;
 
-            if (image && image.data) {
+            if (image && image.data && video && video.data) {
                 const newImage = await uploadImage(image.data);
-                if (newImage) {
+                const newVideo = await uploadImage(video.data);
+                if (newImage  && newVideo) {
                     const lesson = await fetch(`${url}lections`, {
                         method: 'POST',
                         headers: {
@@ -103,7 +111,14 @@ export const CreateLesson = () => {
                                 lectionId: courseCreated.new_lection.id
                             }
                         );
-                        if (image) {
+                        const video = await postVideoLection(
+                            globalData.jwt,
+                            {
+                                url: newVideo.location,
+                                lectionId: courseCreated.new_lection.id
+                            }
+                        );
+                        if (image && video) {
                             successAlert(
                                 redirect,
                                 '¡Bien hecho!',
@@ -280,7 +295,11 @@ export const CreateLesson = () => {
                                             required: true,
                                         })} 
                                     >
-                                        {getCategories()}
+                                        {
+                                            data && data.length && data.map((item: any, idx: number) => (
+                                                <option value={item.id} key={idx}>{item.name}</option>
+                                            ))
+                                        }
                                     </select>
                                     {errors.categorie && <span className='input-error'>La categoría es necesaria para poder crearlo</span>}
                                 </div>
@@ -299,7 +318,11 @@ export const CreateLesson = () => {
                                             required: true,
                                         })} 
                                     >
-                                        {getCoursesList()}
+                                        {
+                                            courses && courses.length && courses.map((item: any, idx: number) => (
+                                                <option value={item.id} key={idx}>{item.name}</option>
+                                            ))
+                                        }
                                     </select>
                                     {errors.categorie && <span className='input-error'>El curso es necesario para poder crearla</span>}
                                 </div>
@@ -323,7 +346,7 @@ export const CreateLesson = () => {
                             // backgroundColor: "#FFF"
                         }}
                     >
-                        Portada del curso
+                        Portada de la lección
                         <SimpleTooltip idTooltip={'portada-curso'} text={'Aquí puedes adjuntar un archivo JPG, JPEG o PNG para usarlo como portada del curso.'}/>
                     </span>
                     <div className={`input-image-container-${style}`}>
@@ -380,13 +403,78 @@ export const CreateLesson = () => {
                             )}
                         />
                     </div>
+                    <br />
+                    <span
+                        style={{
+                            display: 'flex',
+                            columnGap: '0.5em',
+                            height: "2.5em",
+                            fontSize: "16px",
+                            fontWeight: "600"
+                            // backgroundColor: "#FFF"
+                        }}
+                    >
+                        Video del curso
+                        <SimpleTooltip idTooltip={'video-curso'} text={'Aquí puedes adjuntar un archivo MP4 que haga referencia al curso en general.'}/>
+                    </span>
+                    <div className={`input-image-container-${style}`}>
+                        {!video.preview && 
+                            <div className="disclaimer-image-container">
+                                <HiOutlineCloudUpload 
+                                style={{
+                                    width: '50px',
+                                    height: '50px',
+                                    color: '#898989',
+                                    cursor: 'pointer'
+                                }}
+                                />
+                                <h3>
+                                    Arrastre o suelte aquí tus archivos
+                                </h3>
+                            </div>                                
+                            }
+                        {video.preview && 
+                            <video src={video.preview} autoPlay={false} controls className='video-preview'></video>
+                        }
+                        <Controller
+                            name='video'
+                            control={control}
+                            render={({field}:any) => (
+                                <div className='"file-upload"'>
+                                    <input 
+                                        {...field}
+                                        type='file'
+                                        className='input-image'
+                                        onChange={(e: any) => {
+                                            field.onChange(e);
+                                            handleVideoChange(e);
+                                        }}
+                                    />
+                                    <HiOutlineUpload
+                                        style={{
+                                            width: '25px',
+                                            height: '25px',
+                                            color: '#898989',
+                                            cursor: 'pointer',
+                                            position: 'absolute',
+                                            marginLeft: '20px',
+                                            marginTop: '18px'
+                                        }}
+                                    />
+                                    <label htmlFor="file" className="custom-file-upload">
+                                        Sube tu video aquí
+                                    </label>
+                                </div>
+                            )}
+                        />
+                    </div>
                 </div>
                 <div className={`aditional-container-${style}`}>
                     <div className={`custom-select-${style}`}>
                         <div className="header-status-select">
                             <div className='title-container-3'>
                                 <h2 className='section-title'>
-                                    Detalles del curso
+                                    Detalles de la lección
                                 </h2>
                             </div>
                         </div>

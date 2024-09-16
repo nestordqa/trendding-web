@@ -9,6 +9,7 @@ import { simpleWarningAlert } from '../../utils/common/alerts';
 import { useNavigate } from 'react-router-dom';
 import { getAllCategories } from '../../utils/common/react-query/categories';
 import { CategorieCard } from '../common-components/CategoriesCard';
+import { Loading } from '../common-components/Loading';
 
 export const CoursesCategories = () => {
     const globalData = useGlobalData();
@@ -91,11 +92,14 @@ export const CoursesCategories = () => {
         }
     };
 
-    if (isLoading) {
-        return <div>Loading</div>
-    }
   return (
     <div className='courses-container'>
+      {
+        isLoading ? 
+          <Loading message={'Cargando categorías...'} />
+          :
+          null
+      }
         <div className="header-courses">
             <div className="first-container">
                 <div className="courses-title">

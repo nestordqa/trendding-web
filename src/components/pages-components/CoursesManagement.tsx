@@ -11,6 +11,7 @@ import '../../styles/courses-dashboard.css';
 import { CourseCard } from '../common-components/CourseCard';
 import { simpleWarningAlert } from '../../utils/common/alerts';
 import { useNavigate } from 'react-router-dom';
+import { Loading } from '../common-components/Loading';
 
 export const CoursesManagement = () => {
     const globalData = useGlobalData();
@@ -73,11 +74,14 @@ export const CoursesManagement = () => {
     //         return [];
     //     }
     // };
-    if (isLoading) {
-        return <div>Loading</div>
-    }
   return (
     <div className='courses-container'>
+        {
+            isLoading ? 
+                <Loading  message={'Cargando cursos...'}/>
+            :
+            null
+        }
         <div className="header-courses">
             <div className="first-container">
                 <div className="courses-title">
@@ -111,7 +115,7 @@ export const CoursesManagement = () => {
                             <option>Últimos 20 días</option>
                             <option>Últimos 30 días</option>
                         </select>
-                        <img src={arrow} alt="Dropdown arrow" className='dropdown-arrow'/>
+                        {/* <img src={arrow} alt="Dropdown arrow" className='dropdown-arrow'/> */}
                     </div>
                     <div className={`custom-select-filter-${style}`}>
                         <select>
@@ -120,7 +124,7 @@ export const CoursesManagement = () => {
                             <option>Ordenar por categorías</option>
                             <option>Restablecer filtros</option>
                         </select>
-                        <img src={style === 'dark' ? filterButton : filterButtonLight} alt="Dropdowarrown " className='filter-button'/>
+                        {/* <img src={style === 'dark' ? filterButton : filterButtonLight} alt="Dropdowarrown " className='filter-button'/> */}
                     </div>
                 </div>
                 <div className="new-course-container">
@@ -136,7 +140,7 @@ export const CoursesManagement = () => {
                             <CourseCard key={idx} course={item}/>
                         ))
                     :
-                        <div>No hay cursitos</div>
+                        <div>No hay cursos cargados</div>
                 }
             </div>
         </div>

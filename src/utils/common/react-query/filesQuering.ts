@@ -97,3 +97,37 @@ export const getImageTeacher = async(jwt: string, idTeacher: number) => {
         console.error(error);
     }
 };
+
+export const postVideoCourse = async(jwt: string, data: ImageDataCourse) => {
+    try {
+        const image = await fetch(`${baseUrl}videos/courses/`, {
+            method: 'POST',
+            headers: {
+                "Authorization": jwt,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+            
+        });
+        return image;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const postVideoLection = async(jwt: string, data: ImageDataLection) => {
+    try {
+        const image = await fetch(`${baseUrl}videos/lections/`, {
+            method: 'POST',
+            headers: {
+                "Authorization": jwt,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+            
+        });
+        return image;
+    } catch (error) {
+        console.error(error);
+    }
+};

@@ -300,7 +300,7 @@ export const CreateTeacher = () => {
                             // backgroundColor: "#FFF"
                         }}
                     >
-                        Portada del curso
+                        Imagen del profesor
                         <SimpleTooltip idTooltip={'portada-curso'} text={'Aquí puedes adjuntar un archivo JPG, JPEG o PNG para usarlo como portada del curso.'}/>
                     </span>
                     <div className={`input-image-container-${style}`}>

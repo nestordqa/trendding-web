@@ -1,11 +1,9 @@
 import React, {ReactNode, useEffect, useState} from 'react';
 import { HiOutlineEye, HiOutlinePencil, HiOutlineTrash, HiStar } from "react-icons/hi";
-
 import { useGlobalData } from '../../ThemeContext';
 import '../../styles/course-card.css';
 import { warningAlert } from '../../utils/common/alerts';
 import { Chip } from './Chip';
-import { useQuery } from '@tanstack/react-query';
 import { getImageCourse } from '../../utils/common/react-query/filesQuering';
 
 export const CourseCard = ({course}: any) => {

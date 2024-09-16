@@ -258,6 +258,14 @@
     margin-bottom: 1.5em;
 }
 
+.video-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 1em;
+    background-color: #898989;
+    margin-bottom: 1.5em;
+}
+
 .file-upload {
     position: relative;
     display: inline-block;

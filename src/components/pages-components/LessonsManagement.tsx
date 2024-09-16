@@ -11,6 +11,7 @@ import { simpleWarningAlert } from '../../utils/common/alerts';
 import { useNavigate } from 'react-router-dom';
 import { getLessons } from '../../utils/common/react-query/lessons';
 import { LessonCard } from '../common-components/LessonCard';
+import { Loading } from '../common-components/Loading';
 
 export const LessonsManagement = () => {
     const globalData = useGlobalData();
@@ -64,11 +65,14 @@ export const LessonsManagement = () => {
         }
     };
 
-    if (isLoading) {
-        return <div>Loading</div>
-    }
   return (
     <div className='courses-container'>
+        {
+            isLoading ?
+                <Loading message={'Cargando lecciones...'} />
+            :
+            null
+        }
         <div className="header-courses">
             <div className="first-container">
                 <div className="courses-title">
@@ -102,7 +106,7 @@ export const LessonsManagement = () => {
                             <option>Últimos 20 días</option>
                             <option>Últimos 30 días</option>
                         </select>
-                        <img src={arrow} alt="Dropdown arrow" className='dropdown-arrow'/>
+                        {/* <img src={arrow} alt="Dropdown arrow" className='dropdown-arrow'/> */}
                     </div>
                     <div className={`custom-select-filter-${style}`}>
                         <select>
@@ -111,7 +115,7 @@ export const LessonsManagement = () => {
                             <option>Ordenar por categorías</option>
                             <option>Restablecer filtros</option>
                         </select>
-                        <img src={style === 'dark' ? filterButton : filterButtonLight} alt="Dropdowarrown " className='filter-button'/>
+                        {/* <img src={style === 'dark' ? filterButton : filterButtonLight} alt="Dropdowarrown " className='filter-button'/> */}
                     </div>
                 </div>
                 <div className="new-course-container">

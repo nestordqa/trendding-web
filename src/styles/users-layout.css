@@ -1,0 +1,137 @@
+.users-container {
+    width: 100vw;
+    height: 100%;
+    padding-top: 16px;
+    background-color: #06070F;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.link-navbar {
+    text-decoration: none;
+    color: inherit;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.1px;
+    font-weight: 500;
+}
+
+.navbar-users {
+    height: 82px;
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(10px); 
+    width: 80vw;
+    border-radius: 28px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 4px 8px #9A82F95E, 
+                0 -4px 8px #9A82F95E, 
+                4px 0 8px #9A82F95E, 
+                -4px 0 8px #9A82F95E;
+    /* background-color: aliceblue; */
+}
+
+.outlet-container-users {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    /* background-color: aliceblue; */
+}
+
+.logo-trendding-users {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 25%;
+    height: 100%;
+    /* background-color: antiquewhite; */
+}
+
+.logo-trendding-users img {
+    width: 207.03px;
+    height: 50px;
+    /* background-color: aqua; */
+    padding-left: 1em;
+}
+
+.links-container-users {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+}
+
+.buttons-navbar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 35%;
+    height: 100%;
+}
+
+.buttons-navbar-container button {
+    border: 1px solid #765a8899;
+    border-radius: 100px;
+    padding: 8px 16px 8px 16px;
+    width: 142px;
+    height: 42px;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25.6px;
+    color: #EDEDF2
+}
+
+.login-button {
+    background: rgb(201,71,255);
+    background: linear-gradient(180deg, rgba(201,71,255,0) 0%, rgba(176,139,255,0.25) 100%);
+}
+
+.login-button:hover {
+    background: rgb(201,71,255);
+    background: linear-gradient(180deg, rgba(219, 135, 255, 0) 0%, rgba(203, 178, 255, 0.25) 100%);
+}
+
+.start-button {
+    background: rgb(201,71,255);
+    background: linear-gradient(180deg, rgba(201,71,255,0) 0%, rgba(176,139,255,0.5) 100%);
+}
+
+.start-button:hover {
+    background: rgb(201,71,255);
+    background: linear-gradient(180deg, rgba(205, 92, 253, 0) 0%, rgba(191, 161, 255, 0.5) 100%);
+}
+
+.login-background-gradient {
+    position: fixed;
+    top: -5%;
+    right: -5%;
+    z-index: 0;
+    transform: rotate(270deg);
+  }
+
+  .login-background-gradient2 {
+    position: fixed;
+    top: -5%;
+    left: -5%;
+    z-index: 0;
+    transform: rotate(180deg);
+  }

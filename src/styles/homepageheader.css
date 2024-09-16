@@ -1,0 +1,54 @@
+.HomePageHeader-container {
+    height: calc(100vh - 150px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    /* background-color: aquamarine; */
+}
+
+.HomePageHeader-container h1 {
+    font-weight: 500;
+    font-size: 70px;
+    line-height: 91px;
+    letter-spacing: -2px;
+    color: #F8F8F8E5
+}
+
+.HomePageHeader-container h1 span {
+    background: -webkit-linear-gradient(0deg, #AD9EFD 0%, #6137A2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.HomePageHeader-container p {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 30.24px;
+    color: #FFFFFF
+}
+
+.signup-button {
+    border-radius: 100px;
+    padding: 16px 32px 16px 32px;
+    width: 230px;
+    height: 64px;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 32px;
+    color: #EDEDF2;
+    border: 1px solid #765a8899;
+    background: rgb(201,71,255);
+    background: linear-gradient(180deg, rgba(201,71,255,0) 0%, rgba(176,139,255,0.5) 100%);
+    transition: 5s;
+}
+
+.signup-button:hover {
+    background: rgb(201,71,255);
+    background: linear-gradient(180deg, rgba(205, 92, 253, 0) 0%, rgba(191, 161, 255, 0.5) 100%);
+}

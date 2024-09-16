@@ -27,6 +27,8 @@ import { CreateCourse } from './components/pages-components/CreateCourse';
 import { CreateLesson } from './components/pages-components/CreateLesson';
 import { CreateCategorie } from './components/pages-components/CreateCategorie';
 import { CreateTeacher } from './components/pages-components/CreateTeacher';
+import { UsersLayout } from './components/common-components/UsersLayout';
+import { HomePage } from './components/pages-components/users/HomePage';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -40,6 +42,9 @@ root.render(
             <React.StrictMode>
                 <BrowserRouter>
                     <Routes>
+                        <Route path='/' element={<UsersLayout />}>
+                            <Route index element={<HomePage />}/>
+                        </Route>
                         <Route
                             path='/admin'
                             element={<AdminLogin />}

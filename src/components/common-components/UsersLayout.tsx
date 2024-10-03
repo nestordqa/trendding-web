@@ -11,7 +11,6 @@ export const UsersLayout = () => {
     const [containerStyle, setContainerStyle] = useState<string>('users-container');
     useEffect(() => {
         if (route.pathname !== '/') {
-            console.log('pasando', route);
             setContainerStyle('users-container-nobg');
         } else {
             setContainerStyle('users-container');
@@ -26,7 +25,7 @@ export const UsersLayout = () => {
                     </Link>
                 </div>
                 <div className="links-container-users">
-                    <Link className='link-navbar' to={'#'}>Inicio</Link>
+                    <Link className='link-navbar' to={'/'}>Inicio</Link>
                     <Link className='link-navbar' to={'#'}>Membresía</Link>
                     <Link className='link-navbar' to={'#'}>Recursos</Link>
                     <Link className='link-navbar' to={'#'}>Ayuda</Link>

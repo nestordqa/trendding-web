@@ -4,11 +4,16 @@
     padding-top: 16px;
     background-color: #06070F;
     color: #FFFFFF;
+    position: relative; /* Para posicionar el pseudo-elemento */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 100;
+    background-image: url('../assets/images/fondo-footer.png');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: contain;
 }
 
 .link-navbar {
@@ -32,7 +37,7 @@
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    box-shadow: 0 4px 8px #9A82F95E, 
+    box-shadow: 0 -0px 8px #9A82F95E, 
                 0 -4px 8px #9A82F95E, 
                 4px 0 8px #9A82F95E, 
                 -4px 0 8px #9A82F95E;
@@ -120,7 +125,7 @@
     background: linear-gradient(180deg, rgba(205, 92, 253, 0) 0%, rgba(191, 161, 255, 0.5) 100%);
 }
 
-.login-background-gradient {
+.homepage-background-gradient {
     position: fixed;
     top: -5%;
     right: -5%;
@@ -128,7 +133,7 @@
     transform: rotate(270deg);
   }
 
-  .login-background-gradient2 {
+  .homepage-background-gradient2 {
     position: fixed;
     top: -5%;
     left: -5%;

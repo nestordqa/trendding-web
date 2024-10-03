@@ -1,0 +1,51 @@
+.memberships-container {
+    margin-top: 8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.memberships-container span {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    width: 170px;
+    height: 32px;
+    border-radius: 100px;
+    /* padding: 8px 16px 8px 16px; */
+    border: solid 1px #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.memberships-container img {
+    cursor: pointer;
+}
+
+.memberships-container h1 {
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 78px;
+}
+
+.knowmore-button {
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 42px;
+    width: 217px;
+    border: solid 1px #FBF0FF54;
+    background-color: #7B50F5;
+    border-radius: 100px;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 500;
+    transition: .3s ease-in-out;
+}
+
+.knowmore-button:hover {
+    background-color: #9775f5;
+}

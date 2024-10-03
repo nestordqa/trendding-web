@@ -1,0 +1,62 @@
+.testimonios-container {
+    margin-top: 8em;
+    /* background-color: aqua; */
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.testimonios-container span {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    width: 153px;
+    height: 32px;
+    border-radius: 100px;
+    /* padding: 8px 16px 8px 16px; */
+    border: solid 1px #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.testimonios-container h1 {
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 78px;
+}
+
+.testimonios-container p {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -2%;
+}
+
+.testimonios-container button {
+    width: 237px;
+    height: 48px;
+    border-radius: 115px;
+    border: solid 1px #6d6d6d;
+    background-color: #7B50F5;
+    font-weight: 400;
+    font-size: 19px;
+    color: #fff;
+    line-height: 29.26px;
+    transition: all ease 0.2s;
+}
+
+.testimonios-container button:hover {
+    border: solid 1px #f2f2f2;
+    background-color: #baa1ff;
+}
+
+.testimonios-container img {
+    margin-top: 4em;
+    width: 100%; /* Ajusta el ancho según sea necesario */
+    height: auto; /* Mantiene la proporción de la imagen */
+    mask-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 0) 100%);
+}

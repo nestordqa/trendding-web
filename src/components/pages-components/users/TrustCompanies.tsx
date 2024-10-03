@@ -10,7 +10,7 @@ export const TrustCompanies = () => {
   return (
     <div className='trust-container'>
         <div className="chip-container">
-            <span>COMPAÑÍAS QUE CONFÍAN EN NOSOTROS</span>
+            <span>NUESTROS COLABORADORES</span>
         </div>
         <div className="companies-container">
             <img src={TraddingView} alt="Tradding View" className="" />

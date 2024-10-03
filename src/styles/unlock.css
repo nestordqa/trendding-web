@@ -1,0 +1,100 @@
+.unlock-container {
+    margin-top: 8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1090px;
+    height: 465px;
+    border-radius: 32px;
+    background-color: rgb(201,71,255);
+    background: linear-gradient(180deg, #150B310F 0%, #7B50F519 100%);
+    border: solid 1px #FBF0FF54;
+}
+
+.circle-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* background-color: aqua; */
+    /* position: relative; */
+    /* bottom: 0%; */
+    /* left: 10%; */
+    z-index: 0;
+}
+
+.unlock-info-container {
+    /* position: relative; */
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/circle-bg_component.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: aqua; */
+}
+
+.unlock-info-container span {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    width: 155px;
+    height: 32px;
+    border-radius: 100px;
+    /* padding: 8px 16px 8px 16px; */
+    border: solid 1px #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.unlock-info-container h1 {
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 78px;
+}
+
+.unlock-info-container h1 span {
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 78px;
+    border: none;
+    height: auto;
+    width: auto;
+    display:inline-block;
+    border-radius: 0;
+    background-color: #9775f5;
+    background: -webkit-linear-gradient(0deg, #AD9EFD 0%, #6137A2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.unlock-info-container p {
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 31.5px;
+}
+
+.unlock-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 147px;
+    border: solid 1px #FBF0FF54;
+    background-color: #7B50F5;
+    border-radius: 100px;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 500;
+    transition: .3s ease-in-out;
+}
+
+.unlock-button:hover {
+    background-color: #9775f5;
+}
+ 

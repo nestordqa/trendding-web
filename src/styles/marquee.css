@@ -1,28 +1,8 @@
 .marquee {
-    /* position: sticky; */
-    width: 100%;
-    /* background-color: aqua; */
-    overflow: hidden;
-    white-space: nowrap;
-    box-sizing: border-box;
-    font-size: 12px;
-    font-weight: 400;
-    color: #FFF;
-    
-}
-
-.marquee-text {
-    display: inline-block;
-    animation: marquee 25s linear infinite;
-    /* display: flex; */
-    /* flex-direction: row;
+    display: flex;
     justify-content: center;
-    align-items: center; */
-    /* margin-left: 1em;
-    margin-right: 1em; */
-}
-
-@keyframes marquee {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    align-items: center;
+    width: 100%;
+    height: auto;
+    /* background-color: chartreuse; */
 }

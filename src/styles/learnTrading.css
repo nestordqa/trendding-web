@@ -1,0 +1,72 @@
+.LearnTrading-container {
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    z-index: 10000;
+    /* background-color: antiquewhite; */
+    /* height: 530px; */
+    /* border: 1px solid #2f2f2f;
+    border-radius: 32px;
+    background: rgb(26,173,135);
+    background: linear-gradient(180deg, rgba(11, 203, 152, 0) 25%, #7B50F519 100%); */
+}
+
+.LearnTrading-info-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-left: 4.5em; */
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+}
+
+.LearnTrading-info-container h1 {
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 78px;
+    letter-spacing: -2%;
+}
+
+.LearnTrading-info-container p {
+    font-size: 24px;
+    font-weight: 200;
+    line-height: 30.24px;
+    text-align: center;
+    /* letter-spacing: -2%; */
+}
+
+.LearnTrading-info-container button {
+    width: 176px;
+    height: 48px;
+    border-radius: 100px;
+    border: 1px solid #727272;
+    background-color: #7B50F5;
+    transition: 0.2s ease all;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.1px;
+    line-height: 20px;
+    color: #FFF
+}
+
+.LearnTrading-info-container button:hover {
+    width: 176px;
+    height: 48px;
+    border-radius: 100px;
+    border: 1px solid #cacaca;
+    background-color: #a180f9;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    margin-top: 5em;
+}

@@ -21,11 +21,12 @@
     font-size: 12px;
     line-height: 16px;
     font-weight: 400;
-    width: 300px;
+    width: 248px;
     height: 32px;
     border-radius: 100px;
     border: 2px solid #FFFFFF;
     /* padding: 8px 16px 8px 16px; */
+    letter-spacing: 0.15em;
     display: flex;
     justify-content: center;
     align-items: center;

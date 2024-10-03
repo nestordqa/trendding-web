@@ -4,6 +4,7 @@ import { BsCart2 } from "react-icons/bs";
 import logo from '../../assets/images/Logo-trendding.png';
 import gradient from '../../assets/images/login-background-gradient.png';
 import '../../styles/users-layout.css';
+import { simpleWarningAlert } from '../../utils/common/alerts';
 
 export const UsersLayout = () => {
     return (
@@ -21,23 +22,48 @@ export const UsersLayout = () => {
                     <Link className='link-navbar' to={'#'}>Ayuda</Link>
                 </div>
                 <div className="buttons-navbar-container">
-                    <button className="login-button">Iniciar sesión</button>
-                    <button className="start-button">Comenzar</button>
-                    <BsCart2  style={{
-                        fontSize: '25px',
-                        fontWeight: '200',
-                        color: '#FAFAFA',
-                        cursor: 'pointer'
-                    }}/>
+                    <button 
+                        className="login-button"
+                        onClick={() => simpleWarningAlert(
+                            'Aguarda...', 
+                            'Nos encontramos construyendo la app para que tengas la mejor experiencia, en algunos días podrás contar con todas la funciones...', 
+                            'dark'
+                        )}
+                    >
+                        Iniciar sesión
+                    </button>
+                    <button 
+                        className="start-button"
+                        onClick={() => simpleWarningAlert(
+                            'Aguarda...', 
+                            'Nos encontramos construyendo la app para que tengas la mejor experiencia, en algunos días podrás contar con todas la funciones...', 
+                            'dark'
+                        )}
+                    >
+                        Comenzar
+                    </button>
+                    <BsCart2  
+                        style={{
+                            fontSize: '25px',
+                            fontWeight: '200',
+                            color: '#FAFAFA',
+                            cursor: 'pointer'
+                        }}
+                        onClick={() => simpleWarningAlert(
+                            'Aguarda...', 
+                            'Nos encontramos construyendo la app para que tengas la mejor experiencia, en algunos días podrás contar con todas la funciones...', 
+                            'dark'
+                        )}
+                    />
                 </div>
             </div>
-            <div className='login-background-gradient'>
+            <div className='homepage-background-gradient'>
                 <img 
                     src={gradient} 
                     alt="Trendding Gradient" 
                 />
             </div>
-            <div className='login-background-gradient2'>
+            <div className='homepage-background-gradient2'>
                 <img 
                     src={gradient} 
                     alt="Trendding Gradient" 

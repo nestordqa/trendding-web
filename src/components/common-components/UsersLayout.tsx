@@ -1,5 +1,5 @@
-import React from 'react';
-import { Outlet, Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Outlet, Link, useLocation } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";
 import logo from '../../assets/images/Logo-trendding.png';
 import gradient from '../../assets/images/login-background-gradient.png';
@@ -7,8 +7,18 @@ import '../../styles/users-layout.css';
 import { simpleWarningAlert } from '../../utils/common/alerts';
 
 export const UsersLayout = () => {
+    const route = useLocation();
+    const [containerStyle, setContainerStyle] = useState<string>('users-container');
+    useEffect(() => {
+        if (route.pathname !== '/') {
+            console.log('pasando', route);
+            setContainerStyle('users-container-nobg');
+        } else {
+            setContainerStyle('users-container');
+        }
+    }, [route])
     return (
-        <div className='users-container'>
+        <div className={containerStyle}>
             <div className='navbar-users'>
                 <div className="logo-trendding-users">
                     <Link to={'/'}>

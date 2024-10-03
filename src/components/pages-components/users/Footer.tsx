@@ -64,9 +64,10 @@ export const Footer = () => {
                 <h3>
                   &#169; 2023 Trendding
                 </h3>
-                <Link className='link-privacy' to={'#'}>Privacy Policy</Link>
-                <Link className='link-privacy' to={'#'}>Terms of Service</Link>
-                <Link className='link-privacy' to={'#'}>Cookie Settings</Link>
+                <Link className='link-privacy' to={'/privacy-policy'}>Privacy Policy</Link>
+                <Link className='link-privacy' to={'/terms-and-conditions'}>Terms of Service</Link>
+                <Link className='link-privacy' to={'/cookies-settings'}>Cookie Settings</Link>
+                <Link className='link-privacy' to={'/money-back-policy'}>Money Back Policy</Link>
               </div>
               <div className="rrss">
                 <BsFacebook style={style}/>

@@ -29,6 +29,10 @@ import { CreateCategorie } from './components/pages-components/CreateCategorie';
 import { CreateTeacher } from './components/pages-components/CreateTeacher';
 import { UsersLayout } from './components/common-components/UsersLayout';
 import { HomePage } from './components/pages-components/users/HomePage';
+import { CookiesTerms } from './components/pages-components/users/CookiesTerms';
+import { PrivacyPolicy } from './components/pages-components/users/PrivacyPolicy';
+import { TermsAndConditions } from './components/pages-components/users/TermsAndConditions';
+import { ReturnMoneyPolicy } from './components/pages-components/users/ReturnMoneyPolicy';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -44,6 +48,10 @@ root.render(
                     <Routes>
                         <Route path='/' element={<UsersLayout />}>
                             <Route index element={<HomePage />}/>
+                            <Route path='cookies-settings' element={<CookiesTerms />}/>
+                            <Route path='privacy-policy' element={<PrivacyPolicy />}/>
+                            <Route path='terms-and-conditions' element={<TermsAndConditions />}/>
+                            <Route path='money-back-policy' element={<ReturnMoneyPolicy />}/>
                         </Route>
                         <Route
                             path='/admin'

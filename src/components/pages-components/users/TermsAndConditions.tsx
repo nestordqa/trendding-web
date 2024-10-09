@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../../../styles/cookies-terms.css';
 import { Footer } from './Footer';
 
 export const TermsAndConditions = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
   return (
     <div className='cookies-terms-container'>
         <div className='cookies-info'>
